@@ -9,3 +9,6 @@ variable "key_name" {
   type        = string
   default     = "my-key-pair"
 }
+
+variable "aws_access_key" {}
+variable "aws_secret_key" {}

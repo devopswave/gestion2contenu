@@ -23,14 +23,10 @@ resource "aws_iam_role_policy" "example" {
     Version = "2012-10-17",
     Statement = [
       {
-        Action = "ec2:Describe*",
-        Effect = "Allow",
+        Action   = "ec2:Describe*",
+        Effect   = "Allow",
         Resource = "*"
       },
     ]
   })
-}
-
-output "role_arn" {
-  value = aws_iam_role.example.arn
 }

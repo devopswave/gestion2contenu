@@ -5,13 +5,13 @@ resource "aws_instance" "jenkins" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo apt-get update",
-      "sudo apt-get install -y openjdk-11-jdk",
-      "wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -",
-      "sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'",
-      "sudo apt-get update",
-      "sudo apt-get install -y jenkins",
-      "sudo systemctl start jenkins"
+      "apt update",
+      "apt install -y openjdk-11-jdk curl wget",
+      "curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null",
+      "echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | tee /etc/apt/sources.list.d/jenkins.list > /dev/null",
+      "apt update",
+      "apt install -y jenkins",
+      "systemctl start jenkins"
     ]
   }
 }

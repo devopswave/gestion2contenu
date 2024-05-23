@@ -8,7 +8,3 @@ resource "aws_instance" "app" {
     Name = "CMSApp"
   }
 }
-
-output "instance_id" {
-  value = aws_instance.app.id
-}
